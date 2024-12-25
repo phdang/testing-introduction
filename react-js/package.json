@@ -1,0 +1,15 @@
+{
+  "name": "jest-snapshot-example",
+  "scripts": {
+    "test": "jest",
+    "test:update": "jest --updateSnapshot"
+  },
+  "dependencies": {
+    "babel-jest": "^19.0.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "react": "^15.4.2",
+    "jest": "^19.0.2",
+    "react-test-renderer": "^15.4.2"
+  }
+}
