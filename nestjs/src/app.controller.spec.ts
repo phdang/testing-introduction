@@ -28,43 +28,49 @@ import { UserLikedModule } from './user-liked/user-liked.module'
 import { SettingModule } from './settings/setting.module'
 import { StoRequestModule } from './sto-requests/sto-request.module'
 import { NfcTagModule } from './nfc-tags/nfc-tag.module'
+import { SettingService } from './settings/setting.service'
 
 describe('AppController', () => {
   let appController: AppController
-
+  let appService: AppService
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       imports: [
-       AppModule,
-       ReleaseModule,
-       ArtistModule,
-       HttpClientModule,
-       QueueModule,
-       UserModule,
-       NftModule,
-       TotalModule,
-       NotificationModule,
-       LabelModule,
-       UploadModule,
-       OwnerCardModule,
-       SaleV2Module,
-       WantModule,
-       NftHistoryModule,
-       TemplateV2Module,
-       SettingModule,
-       UserLikedModule,
-       StoRequestModule,
-       NfcTagModule
+        AppModule,
+        ReleaseModule,
+        ArtistModule,
+        HttpClientModule,
+        QueueModule,
+        UserModule,
+        NftModule,
+        TotalModule,
+        NotificationModule,
+        LabelModule,
+        UploadModule,
+        OwnerCardModule,
+        SaleV2Module,
+        WantModule,
+        NftHistoryModule,
+        TemplateV2Module,
+        SettingModule,
+        UserLikedModule,
+        StoRequestModule,
+        NfcTagModule
       ],
       controllers: [AppController],
       providers: [
-       AppService,
-       NotificationService,
-       PrismaService, NftService, RedisService, MailerService
+        AppService,
+        NotificationService,
+        PrismaService,
+        NftService,
+        RedisService,
+        SettingService,
+        MailerService
       ]
     }).compile()
 
     appController = app.get<AppController>(AppController)
+    appService = app.get<AppService>(AppService)
   })
 
   describe('root', () => {
@@ -72,8 +78,10 @@ describe('AppController', () => {
       expect(appController).toBeDefined()
     })
     it('should return "hello"', async () => {
+      const spy = jest.spyOn(appService, 'getHello')
       const response = await appController.getHello()
       expect(response).toBe('hello')
+      expect(spy).toHaveBeenCalled()
     })
   })
 })

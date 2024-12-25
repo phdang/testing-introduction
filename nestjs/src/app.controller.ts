@@ -31,6 +31,9 @@ export class AppController {
 
   @Get()
   async getHello() {
+    // const random = Math.random()
+    // if (random > 0.2)
+    await this.appService.getHello()
     return 'hello'
   }
 

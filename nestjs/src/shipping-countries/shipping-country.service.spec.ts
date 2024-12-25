@@ -8,7 +8,7 @@ import { findShippingCountrySelect } from "./shipping-country.type"
 
 describe('Shipping Country Service', () => {
   let service: ShippingCountryService
-  let cache: RedisServicue
+  let cache: RedisService
   beforeEach(async () => {
   const moduleRef = await Test.createTestingModule({
     imports: [PrismaModule, RedisModule],
