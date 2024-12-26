@@ -18,6 +18,20 @@ describe('ArrayUtil', () => {
     expect(result).toEqual([])
   })
 
+  it('should return an empty array if the input is an empty array', () => {
+    const arr = []
+    const expected = []
+    const result = fnc(arr)
+    expect(result).toEqual(expected)
+  })
+
+  it('should return unique array with empty string values', () => {
+    const arr = ['', '']
+    const expected = ['']
+    const result = fnc(arr)
+    expect(result).toEqual(expected)
+  })
+
   it('should return only unique values', () => {
     const arr = [1, 2, 3, 4, 5, null, null, 2, null, null]
     const expected = [1, 2, 3, 4, 5, null]
